@@ -1,0 +1,6 @@
+(defun fibo (n &optional (memo (make-hash-table)))
+  (cond ((<= n 2) n)
+        (t (or (gethash n memo)
+               (setf (gethash n memo)
+                     (+ (fibo (- n 1) memo)
+                        (fibo (- n 2) memo)))))))

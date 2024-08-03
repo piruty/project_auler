@@ -1,0 +1,1 @@
+(load "is-prime.lisp")
