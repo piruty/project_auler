@@ -1,7 +1,7 @@
 function solve(p)
   count = 0
-  for a in 1..p
-    for b in a+1..p
+  for a in 1:p
+    for b in a+1:p
       c = p - a - b
       if c < b
         continue
@@ -16,4 +16,17 @@ function solve(p)
   return count
 end
 
-puts solve(120)
+# println(solve(120))
+function s()
+  maxc = 0
+  maxp = 0
+  for p in 1:1000
+    c = solve(p)
+    if maxc < c
+      maxc = c
+      maxp = p
+    end
+  end
+  return maxp
+end
+println(s())

@@ -1,4 +1,4 @@
-module PrimeModule
+module Primes
 
 function is_prime(n::Int)
   if n <= 1
