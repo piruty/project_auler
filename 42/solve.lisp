@@ -25,3 +25,33 @@
            (n1 (- x 1))
            (n2 (/ n1 2)))
       (= n2 (floor n2))))
+
+(defun char-to-index (char)
+  (- (char-code (char-downcase char))
+     (char-code #\a)
+     -1))
+
+(defun test-char-to-index ()
+  (format t "~A~%" (char-to-index #\A))
+  (format t "~A~%" (char-to-index #\z)))
+
+(defun split-csv-string (str)
+  (loop for start = 0 then (+ pos 1)
+        for pos = (position #\, str :start start)
+        collect (string-trim '(#\" #\Space) (subseq str start (or pos (length str))))
+        while pos))
+
+(defun word-to-index-sum (word)
+  (let ((c 0))
+    (loop for s across word
+          do (setf c (+ c (char-to-index s))))
+    c))
+
+(defun process ()
+  (let ((c 0)
+        (words (split-csv-string (read-file "42/words.txt"))))
+    (loop for word in words
+          do (if (is-triangle-number (word-to-index-sum word))
+                 (setf c (1+ c))
+                 nil))
+    c))
