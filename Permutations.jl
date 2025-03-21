@@ -26,4 +26,6 @@ function perms(arr)
   return result
 end
 
+export perms
+
 end
