@@ -28,7 +28,7 @@ end
 
 function primes(max::Int, min::Int = 2)
   ans = []
-  for i in 1:max
+  for i in min:max
     if is_prime(i)
       append!(ans, i)
     end
